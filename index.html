@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Diwali ✨</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #3b145c, #10051f 70%);
+    color: white;
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    padding: 30px;
+    z-index: 2;
+}
+
+.diyas {
+    font-size: 65px;
+    animation: glow 2s infinite alternate;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(35px, 8vw, 65px);
+    color: #ffd76a;
+    text-shadow: 0 0 15px #ff9d00,
+                 0 0 35px #ff4500;
+    animation: appear 2s ease;
+}
+
+.subtitle {
+    font-size: 19px;
+    margin-top: 20px;
+    color: #ffe9c0;
+    line-height: 1.8;
+}
+
+.message {
+    margin-top: 25px;
+    font-size: 17px;
+    color: #ffc9ed;
+    line-height: 1.8;
+}
+
+button {
+    margin-top: 30px;
+    padding: 14px 30px;
+    border: 1px solid gold;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff7b00, #ffca28);
+    color: #32102d;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px gold;
+}
+
+#fireworks {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.spark {
+    position: absolute;
+    font-size: 25px;
+    animation: burst 2s ease-out forwards;
+}
+
+@keyframes glow {
+    from { filter: drop-shadow(0 0 5px orange); }
+    to { filter: drop-shadow(0 0 25px gold); }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes burst {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    30% { opacity: 1; }
+    100% {
+        opacity: 0;
+        transform: scale(3) translateY(-100px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="fireworks"></div>
+
+<div class="container">
+
+    <div class="diyas">🪔✨🪔</div>
+
+    <h1>Happy Diwali!</h1>
+
+    <p class="subtitle">
+        May your life sparkle with happiness,<br>
+        shine with success and glow with love.
+    </p>
+
+    <p class="message">
+        May every diya bring new hopes,<br>
+        every firework bring new dreams,<br>
+        and every moment bring beautiful memories. ❤️
+    </p>
+
+    <button onclick="celebrate()">
+        🎆 Celebrate Diwali
+    </button>
+
+    <p style="margin-top:35px; color:#d6a9e8;">
+        Made with ❤️ and a little bit of code.
+    </p>
+
+</div>
+
+<script>
+function celebrate() {
+    const area = document.getElementById("fireworks");
+
+    const symbols = ["✨", "🎆", "🎇", "💫", "⭐"];
+
+    for (let i = 0; i < 35; i++) {
+        const spark = document.createElement("span");
+
+        spark.className = "spark";
+        spark.innerText = symbols[
+            Math.floor(Math.random() * symbols.length)
+        ];
+
+        spark.style.left = Math.random() * 100 + "vw";
+        spark.style.top = Math.random() * 100 + "vh";
+
+        area.appendChild(spark);
+
+        setTimeout(() => spark.remove(), 2000);
+    }
+}
+
+// Automatic fireworks when page opens
+setInterval(celebrate, 3000);
+</script>
+
+</body>
+</html>
